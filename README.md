@@ -1,10 +1,10 @@
 # Laravel PayPal
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/srmklive/paypal.svg?style=flat-square)](https://packagist.org/packages/srmklive/paypal)
-[![Total Downloads](https://img.shields.io/packagist/dt/srmklive/paypal.svg?style=flat-square)](https://packagist.org/packages/srmklive/paypal)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/Digitap/paypal.svg?style=flat-square)](https://packagist.org/packages/Digitap/paypal)
+[![Total Downloads](https://img.shields.io/packagist/dt/Digitap/paypal.svg?style=flat-square)](https://packagist.org/packages/Digitap/paypal)
 [![StyleCI](https://styleci.io/repos/43671533/shield?style=flat)](https://styleci.io/repos/43671533)
-[![Code Quality](https://scrutinizer-ci.com/g/srmklive/laravel-paypal/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/srmklive/laravel-paypal/?branch=master)
+[![Code Quality](https://scrutinizer-ci.com/g/Digitap/laravel-paypal/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Digitap/laravel-paypal/?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5f21a940-9d60-4d33-84ce-e367a253cce3/small.png)](https://insight.sensiolabs.com/projects/5f21a940-9d60-4d33-84ce-e367a253cce3)
 
 - [Introduction](#introduction)
@@ -33,7 +33,7 @@
 - [Handling PayPal IPN](#paypalipn)
 - [Creating Subscriptions](#create-subscriptions)
 - [Support](#support)
-- [PayPal Documentation](https://github.com/srmklive/laravel-paypal/blob/master/PAYPALDOCS.md)
+- [PayPal Documentation](https://github.com/Digitap/laravel-paypal/blob/master/PAYPALDOCS.md)
 
     
 <a name="introduction"></a>
@@ -43,14 +43,8 @@ By using this plugin you can process or refund payments and handle IPN (Instant 
 
 **Currently only PayPal Express Checkout API Is Supported.**
 
-<a name="demo-application"></a>
-## Demo Application
-
-Demo Application:
-https://laravel-paypal-demo.srmk.info/
-
 Github repo
-https://github.com/srmklive/laravel-paypal-demo
+https://github.com/Digitapeu/laravel-paypal
 
 <a name="paypal-api-credentials"></a>
 ## PayPal API Credentials
@@ -65,25 +59,25 @@ https://developer.paypal.com/docs/classic/api/apiCredentials/#create-an-api-sign
 * Use following command to install:
 
 ```bash
-composer require srmklive/paypal:~1.0
+composer require digitapeu/paypal:~1.6.1
 ```
 
 * Add the service provider to your `$providers` array in `config/app.php` file like: 
 
 ```php
-Srmklive\PayPal\Providers\PayPalServiceProvider::class
+Digitap\PayPal\Providers\PayPalServiceProvider::class
 ```
 
 * Add the alias to your `$aliases` array in `config/app.php` file like: 
 
 ```php
-'PayPal' => Srmklive\PayPal\Facades\PayPal::class
+'PayPal' => Digitap\PayPal\Facades\PayPal::class
 ```
 
 * Run the following command to publish configuration:
 
 ```bash
-php artisan vendor:publish --provider "Srmklive\PayPal\Providers\PayPalServiceProvider"
+php artisan vendor:publish --provider "Digitap\PayPal\Providers\PayPalServiceProvider"
 ```
 
 <a name="configuration"></a>
@@ -99,7 +93,7 @@ return [
         'password'    => env('PAYPAL_SANDBOX_API_PASSWORD', ''),
         'secret'      => env('PAYPAL_SANDBOX_API_SECRET', ''),
         'certificate' => env('PAYPAL_SANDBOX_API_CERTIFICATE', ''),
-        'app_id'      => 'APP-80W284485P519543T', // Used for testing Adaptive Payments API in sandbox mode
+        'app_id'      => '', // Used for testing Adaptive Payments API in sandbox mode
     ],
     'live' => [
         'username'    => env('PAYPAL_LIVE_API_USERNAME', ''),
@@ -140,8 +134,8 @@ Following are some ways through which you can access the paypal provider:
 
 ```php
 // Import the class namespaces first, before using it directly
-use Srmklive\PayPal\Services\ExpressCheckout;
-use Srmklive\PayPal\Services\AdaptivePayments;
+use Digitap\PayPal\Services\ExpressCheckout;
+use Digitap\PayPal\Services\AdaptivePayments;
 
 $provider = new ExpressCheckout;      // To use express checkout.
 $provider = new AdaptivePayments;     // To use adaptive payments.
@@ -413,7 +407,7 @@ Suppose you have set IPN URL to **http://example.com/ipn/notify/** in PayPal. To
      */
     public function postNotify(Request $request)
     {
-        // Import the namespace Srmklive\PayPal\Services\ExpressCheckout first in your controller.
+        // Import the namespace Digitap\PayPal\Services\ExpressCheckout first in your controller.
         $provider = new ExpressCheckout;
         
         $request->merge(['cmd' => '_notify-validate']);
@@ -478,7 +472,7 @@ $response = $provider->createYearlySubscription($token, $amount, $description);
 ## Support
 
 This plugin only supports Laravel 5.1 or greater.
-* In case of any issues, kindly create one on the [Issues](https://github.com/srmklive/laravel-paypal/issues) section.
+* In case of any issues, kindly create one on the [Issues](https://github.com/Digitap/laravel-paypal/issues) section.
 * If you would like to contribute:
   * Fork this repository.
   * Implement your features.

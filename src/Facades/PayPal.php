@@ -4,8 +4,8 @@ namespace Digitap\PayPal\Facades;
 
 /*
  * Class Facade
- * @package Srmklive\PayPal\Facades
- * @see Srmklive\PayPal\ExpressCheckout
+ * @package Digitap\PayPal\Facades
+ * @see Digitap\PayPal\ExpressCheckout
  */
 
 use Illuminate\Support\Facades\Facade;

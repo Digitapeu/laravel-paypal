@@ -71,7 +71,7 @@ class ExpressCheckout
          if(isset($data['custom'])){
              $this->post = $this->post->merge([
                  'PAYMENTREQUEST_0_CUSTOM' => $data['custom']
-             ])
+             ]);
          }
      }
 

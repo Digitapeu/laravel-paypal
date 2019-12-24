@@ -1,6 +1,6 @@
 <?php
 
-namespace Srmklive\PayPal\Traits;
+namespace Digitap\PayPal\Traits;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\BadResponseException as HttpBadResponseException;

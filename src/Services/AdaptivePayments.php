@@ -1,8 +1,8 @@
 <?php
 
-namespace Srmklive\PayPal\Services;
+namespace Digitap\PayPal\Services;
 
-use Srmklive\PayPal\Traits\PayPalRequest as PayPalAPIRequest;
+use Digitap\PayPal\Traits\PayPalRequest as PayPalAPIRequest;
 
 class AdaptivePayments
 {

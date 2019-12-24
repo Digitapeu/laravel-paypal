@@ -1,6 +1,6 @@
 <?php
 
-namespace Srmklive\PayPal\Traits;
+namespace Digitap\PayPal\Traits;
 
 use Illuminate\Support\Collection;
 

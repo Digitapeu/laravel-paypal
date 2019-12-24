@@ -1,11 +1,11 @@
 <?php
 
-namespace Srmklive\PayPal\Services;
+namespace Digitap\PayPal\Services;
 
 use Illuminate\Support\Collection;
-use Srmklive\PayPal\Traits\PayPalRequest as PayPalAPIRequest;
-use Srmklive\PayPal\Traits\PayPalTransactions;
-use Srmklive\PayPal\Traits\RecurringProfiles;
+use Digitap\PayPal\Traits\PayPalRequest as PayPalAPIRequest;
+use Digitap\PayPal\Traits\PayPalTransactions;
+use Digitap\PayPal\Traits\RecurringProfiles;
 
 class ExpressCheckout
 {
@@ -74,6 +74,7 @@ class ExpressCheckout
                 'L_PAYMENTREQUEST_0_AMT'.$num   => $item['price'],
                 'L_PAYMENTREQUEST_0_DESC'.$num  => isset($item['desc']) ? $item['desc'] : null,
                 'L_PAYMENTREQUEST_0_QTY'.$num   => isset($item['qty']) ? $item['qty'] : 1,
+                'L_PAYMENTREQUEST_0_TAXAMT'.$num   => isset($item['tax']) ? $item['tax'] : 1,
             ];
         })->flatMap(function ($value) {
             return $value;

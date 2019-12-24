@@ -1,15 +1,15 @@
 <?php
 
-namespace Srmklive\PayPal\Providers;
+namespace Digitap\PayPal\Providers;
 
 /*
  * Class PayPalServiceProvider
- * @package Srmklive\PayPal
+ * @package Digitap\PayPal
  */
 
 use Illuminate\Support\ServiceProvider;
-use Srmklive\PayPal\Services\AdaptivePayments;
-use Srmklive\PayPal\Services\ExpressCheckout;
+use Digitap\PayPal\Services\AdaptivePayments;
+use Digitap\PayPal\Services\ExpressCheckout;
 
 class PayPalServiceProvider extends ServiceProvider
 {

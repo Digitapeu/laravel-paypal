@@ -1,9 +1,9 @@
 <?php
 
-namespace Srmklive\PayPal;
+namespace Digitap\PayPal;
 
-use Srmklive\PayPal\Services\AdaptivePayments;
-use Srmklive\PayPal\Services\ExpressCheckout;
+use Digitap\PayPal\Services\AdaptivePayments;
+use Digitap\PayPal\Services\ExpressCheckout;
 
 class PayPalFacadeAccessor
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Srmklive\PayPal\Facades;
+namespace Digitap\PayPal\Facades;
 
 /*
  * Class Facade
@@ -19,6 +19,6 @@ class PayPal extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Srmklive\PayPal\PayPalFacadeAccessor';
+        return 'Digitap\PayPal\PayPalFacadeAccessor';
     }
 }

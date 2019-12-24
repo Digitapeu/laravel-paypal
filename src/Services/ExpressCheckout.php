@@ -60,6 +60,22 @@ class ExpressCheckout
     }
 
     /**
+     * Set custom data for the current transaction
+     * 
+     * @param array $items
+     * 
+     * @return \Illuminate\Support\Collection
+     */
+
+     protected function setCustomData($items){
+         if(isset($data['custom'])){
+             $this->post = $this->post->merge([
+                 'PAYMENTREQUEST_0_CUSTOM' => $data['custom']
+             ])
+         }
+     }
+
+    /**
      * Set cart item details for PayPal.
      *
      * @param array $items
@@ -74,7 +90,9 @@ class ExpressCheckout
                 'L_PAYMENTREQUEST_0_AMT'.$num   => $item['price'],
                 'L_PAYMENTREQUEST_0_DESC'.$num  => isset($item['desc']) ? $item['desc'] : null,
                 'L_PAYMENTREQUEST_0_QTY'.$num   => isset($item['qty']) ? $item['qty'] : 1,
-                'L_PAYMENTREQUEST_0_TAXAMT'.$num   => isset($item['tax']) ? $item['tax'] : 1,
+                'L_PAYMENTREQUEST_0_TAXAMT'.$num   => isset($item['tax']) ? $item['tax'] : 0,
+                'L_PAYMENTREQUEST_0_ITEMCATEGORY'.$num => $item['category'],
+                'L_PAYMENTREQUEST_0_ITEMURL'.$num => $item['url']
             ];
         })->flatMap(function ($value) {
             return $value;
@@ -178,8 +196,8 @@ class ExpressCheckout
         $this->setItemSubTotal($data);
 
         $this->post = $this->setCartItems($data['items'])->merge([
-            'PAYMENTREQUEST_0_ITEMAMT'       => $this->subtotal,
             'PAYMENTREQUEST_0_AMT'           => $data['total'],
+            'PAYMENTREQUEST_0_ITEMAMT'       => $this->subtotal,
             'PAYMENTREQUEST_0_PAYMENTACTION' => $this->paymentAction,
             'PAYMENTREQUEST_0_CURRENCYCODE'  => $this->currency,
             'PAYMENTREQUEST_0_DESC'          => $data['invoice_description'],
@@ -189,6 +207,8 @@ class ExpressCheckout
             'CANCELURL'                      => $data['cancel_url'],
             'LOCALE'                         => $this->locale,
         ]);
+
+        $this->setCustomData($data);
 
         $this->setTaxAmount($data);
 

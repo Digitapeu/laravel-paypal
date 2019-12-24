@@ -113,7 +113,7 @@ class ExpressCheckout
      */
     protected function setItemSubTotal($data)
     {
-        $this->subtotal = isset($data['subtotal']) ? $data['subtotal'] : $data['total'];
+        $this->subtotal = ( isset($data['subtotal']) ? $data['subtotal'] : $data['total'] ) - ( isset($data['tax']) ? $data['tax'] : 0);
     }
 
     /**

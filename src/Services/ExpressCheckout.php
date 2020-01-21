@@ -91,7 +91,7 @@ class ExpressCheckout
                 'L_PAYMENTREQUEST_0_DESC'.$num  => isset($item['desc']) ? $item['desc'] : null,
                 'L_PAYMENTREQUEST_0_QTY'.$num   => isset($item['qty']) ? $item['qty'] : 1,
                 'L_PAYMENTREQUEST_0_TAXAMT'.$num   => isset($item['tax']) ? $item['tax'] : 0,
-                'L_PAYMENTREQUEST_0_ITEMCATEGORY'.$num => isset($item['category']) ? $item['category'] : 'DIGITAL_GOODS',
+                // 'L_PAYMENTREQUEST_0_ITEMCATEGORY'.$num => isset($item['category']) ? $item['category'] : 'DIGITAL_GOODS',
                 'L_PAYMENTREQUEST_0_ITEMURL'.$num => isset($item['url']) ? $item['url'] : null
             ];
         })->flatMap(function ($value) {
